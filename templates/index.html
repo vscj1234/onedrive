@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAG Chatbot Demo</title>
-    <link rel="stylesheet" href="/static/css/onedrive.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="onedrive.css">
+    
 </head>
 <body>
     <h1>Welcome, {{ session['user']['name'] }}</h1>
-
-    <!-- Upload Section -->
-    <div id="uploadSection">
-        <h3>Upload Document</h3>
-        <input type="file" id="fileInput" accept=".docx">
-        <button id="uploadButton" onclick="uploadFile()">Upload</button>
-        <div class="upload-progress" id="uploadProgress">
-            <div class="progress-bar">
-                <div class="progress-bar-fill" id="progressBarFill"></div>
-            </div>
-            <div class="uploadStatus" id="upload-status"></div>
-        </div>
-    </div>
-
     <!-- Chat Section -->
-    <div id="chatbox"></div>
-    <div id="inputSection">
-        <input type="text" id="userInput" placeholder="Type your message...">
-        <button id="sendButton">Send</button>
-    </div>
+    <div class="container">
+        <!-- Chat Section -->
+        <div id="chatSection">
+            <div id="chatbox"></div>
+            <div id="inputSection">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendButton">Send</button>
+                <button id="uploadButton" onclick="triggerFileInput()">Upload</button>
+                <input type="file" id="fileInput" accept=".docx" style="display: none;" onchange="showSelectedFile()">
+            </div>
+            <div id="selectedFileName" style="margin-top: 10px; color: #666;"></div> 
+            <div class="upload-progress" id="uploadProgress">
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="uploadStatus" id="upload-status"></div>
+            </div>
+        </div>
+
 
     <!-- Relevant Documents Section -->
     <div id="relevantDocs">
@@ -37,6 +37,7 @@
     </div>
 
     <!-- External JavaScript file -->
-    <script src="/static/js/chatbot.js"></script>
+    <script src="chatbot.js"></script>
 </body>
 </html>
+
