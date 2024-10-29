@@ -1,20 +1,93 @@
 /* static/css/style.css */
-body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-                #chatbox { height: 300px; border: 1px solid #ddd; overflow-y: auto; padding: 10px; margin-bottom: 10px; }
-                #userInput { width: 70%; padding: 5px; }
+body { 
+    font-family: Arial, sans-serif;
+    background-color: #FFFCF2;
+    color: #252422; 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+h1 {
+    text-align: center;
+    padding: 2%;
+}
+.container {
+    display: flex;
+    gap: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+
+}
+
+#chatSection {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#chatbox { 
+height: 300px;
+border: 1px solid #CCC5B9; 
+overflow-y: auto;
+background-color: #CCC5B9; 
+border-radius: 5px;
+margin-bottom: 10px; 
+}
+
+                #inputSection {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                }
+
+               #userInput {
+                flex: 1;
+	            border: none;
+	            outline: none;
+	            flex: 1;
+                padding: 8px;
+                border: 1px solid #EB5E28;
+                background-color: #ffebde; /* Slight transparency */
+                border-radius: 15px; /* Rounded corners */
+                color: #403D39;
+                outline: none;
+                }
+                
                 button {
-                    padding: 8px 15px;
-                    background: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
+                display: grid;
+	            grid-auto-flow: column;
+                grid-gap: .5em;
+                justify-items: center;
+                align-content: center;
+                color: #EB5E28;
+                border: .2em solid #EB5E28;
+                background: hsl(0 0 0/0);
+                padding: .85em 1.5em;
+                color: #EB5E28;
+                border-radius: 2em;
+                transition: 1s;
                 }
+
                 button:hover {
-                    background: #0056b3;
+                    background: #EB5E28;
+                    color: #fff;
                 }
+
+                button:focus{
+                    background: #EB5E28;
+                    color: #fff;
+                }
+                button:active{
+                    background: #EB5E28;
+                    color: #fff;
+                }
+
                 #uploadSection {
-                    margin: 20px 0;
+                margin: 20px 0;
                 padding: 15px;
                 border: 1px solid #ddd;
                 border-radius: 4px;
@@ -26,6 +99,7 @@ body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding
             .upload-progress {
                 margin-top: 10px;
                 display: none;
+                
             }
             .progress-bar {
                 width: 100%;
@@ -36,7 +110,7 @@ body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding
             }
             .progress-bar-fill {
                 height: 100%;
-                background-color: #4CAF50;
+                background-color: #EB5E28;
                 width: 0%;
                 transition: width 0.3s ease-in-out;
             }
@@ -44,11 +118,13 @@ body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding
                 margin: 5px 0;
                 padding: 8px;
                 border-radius: 4px;
+                opacity: 1;
             }
             .user-message {
                 background: #e3f2fd;
                 margin-left: 20%;
                 margin-right: 5px;
+                opacity: 1;
             }
             .bot-message {
                 background: #f5f5f5;
@@ -56,10 +132,12 @@ body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding
                 margin-left: 5px;
             }
             #relevantDocs { 
-                margin-top: 20px;
+                flex: 1;
                 padding: 15px;
                 border: 1px solid #ddd;
-                border-radius: 4px;
+                border-radius: 8px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+                background-color: #CCC5B9;
             }
             .doc-link { 
                 color: #007bff;
