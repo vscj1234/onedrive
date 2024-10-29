@@ -6,9 +6,26 @@ const docList = document.getElementById('docList');
 const uploadProgress = document.getElementById('uploadProgress');
 const progressBarFill = document.getElementById('progressBarFill');
 const uploadStatus = document.getElementById('upload-status');
+const fileInput = document.getElementById('fileInput');
+const selectedFileName = document.getElementById('selectedFileName');
 
+// Function to trigger the hidden file input when the Upload button is clicked
+function triggerFileInput() {
+    fileInput.click();
+}
+
+// Function to show the selected file name
+function showSelectedFile() {
+    const file = fileInput.files[0];
+    if (file) {
+        selectedFileName.textContent = `Selected file: ${file.name}`;
+    } else {
+        selectedFileName.textContent = '';
+    }
+}
+
+// Function to upload the selected file
 async function uploadFile() {
-    const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];
 
     if (!file) {
@@ -35,7 +52,8 @@ async function uploadFile() {
         if (response.data.success) {
             uploadStatus.textContent = 'File uploaded and processed successfully!';
             addMessage('System', `File "${response.data.file_name}" has been uploaded and processed.`);
-            fileInput.value = '';
+            fileInput.value = '';  // Clear the file input after upload
+            selectedFileName.textContent = ''; // Clear the file name display after upload
         } else {
             uploadStatus.textContent = 'Upload failed: ' + response.data.error;
         }
@@ -49,6 +67,7 @@ async function uploadFile() {
     }, 3000);
 }
 
+// Function to add a new message in the chatbox
 function addMessage(sender, message) {
     const messageElement = document.createElement('p');
     messageElement.className = `message ${sender.toLowerCase()}-message`;
@@ -57,6 +76,7 @@ function addMessage(sender, message) {
     chatbox.scrollTop = chatbox.scrollHeight;
 }
 
+// Function to update relevant documents section
 function updateRelevantDocs(documents) {
     docList.innerHTML = '';
 
@@ -76,6 +96,7 @@ function updateRelevantDocs(documents) {
     });
 }
 
+// Function to open a document in a new tab
 function openDocument(fileId) {
     if (!fileId || fileId === 'Unknown') {
         console.error('Invalid file ID provided');
@@ -107,6 +128,7 @@ function openDocument(fileId) {
         });
 }
 
+// Event listener for the Send button
 sendButton.onclick = function() {
     const message = userInput.value;
     if (message) {
@@ -123,6 +145,7 @@ sendButton.onclick = function() {
     }
 };
 
+// Event listener for Enter key to send message
 userInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
         sendButton.click();
